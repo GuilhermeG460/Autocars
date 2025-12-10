@@ -1,0 +1,407 @@
+/* ======================================= */
+/* 🎨 PAGAMENTO.CSS - ESTILOS CONSOLIDADOS */
+/* ======================================= */
+
+/* --- Configuração Geral e Container Principal --- */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.container-pagamento {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    /* Mantido em 450px para um layout compacto */
+}
+
+/* --- Cabeçalho e Informações do Carro (Alinhamento Horizontal) --- */
+
+header h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    color: #0d7377;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Contêiner FLEX para exibir a IMAGEM e o NOME lado a lado */
+.car-info-display {
+    display: flex;
+    align-items: center;
+    /* Centraliza verticalmente o conteúdo */
+    gap: 15px;
+    /* Espaçamento entre a imagem e o texto */
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.car-image-container {
+    width: 140px;
+    /* Largura da miniatura */
+    height: 80px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    /* Impede que a imagem encolha */
+    /* margin-bottom: 20px; Removido pois está dentro do car-info-display */
+}
+
+.car-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Garante que a imagem preencha o container */
+}
+
+.car-info-display p {
+    margin: 0;
+    font-size: 1em;
+    font-weight: 500;
+    color: #555;
+}
+
+#car-name {
+    color: #c0392b;
+    /* Vermelho */
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+/* --- Detalhes do Pagamento e Parcelamento --- */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#installments {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    /* Garante que padding e border não aumentem a largura total */
+}
+
+/* --- Resumo do Pedido e Frete Grátis --- */
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+/* CLASSE PARA APLICAÇÃO DO FRETE GRÁTIS pelo JavaScript */
+.frete-gratis-aplicado {
+    text-decoration: line-through;
+    color: #e74c3c !important;
+    /* Vermelho para o valor riscado */
+    font-weight: 400;
+    transition: all 0.5s ease;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 2px solid #eee;
+    font-size: 1.2em;
+    color: #333;
+}
+
+/* --- Botões: Comprar e Cadastro --- */
+
+.btn-comprar {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    color: #fff;
+    text-align: center;
+}
+
+.btn-cadastro {
+    display: block;
+    width: 450px;
+    /* Centralização por ocupar 100% da largura */
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    color: #ffffff;
+    text-align: center;
+    /* ESTA REGRA CENTRALIZA O TEXTO INTERNO */
+}
+
+/* ... o restante do seu CSS permanece o mesmo ... */
+
+.btn-comprar.vermelho {
+    background-color: #c0392b;
+}
+
+.btn-comprar.vermelho:hover {
+    background-color: #e74c3c;
+}
+
+.btn-cadastro.verde {
+    background-color: #27ae60;
+    /* Verde vibrante */
+}
+
+.btn-cadastro.verde:hover {
+    background-color: #2ecc71;
+}
+
+/* ESTADO FINAL DE FRETE GRÁTIS APLICADO */
+.btn-cadastro.cinza-desabilitado {
+    background-color: #27ae60;
+    /* Mantém o verde para indicar sucesso */
+    cursor: default;
+    opacity: 1;
+}
+
+.botao-voltar {
+    /* Aparência de Botão */
+    display: inline-flex;
+    /* Usar flex para alinhar o texto e o ícone */
+    align-items: center;
+    gap: 8px;
+    /* Espaço entre o ícone e o texto */
+
+    padding: 10px 15px;
+    margin: 20px 0;
+    /* Espaço acima e abaixo do botão */
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+
+    /* Cores e Estilos */
+    background-color: #34495e;
+    /* Cor escura, discreta e profissional */
+    color: white;
+    border: 1px solid #2c3e50;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Ícone de seta */
+.botao-voltar .fas {
+    font-size: 14px;
+}
+
+/* Efeito ao passar o mouse (Hover) */
+.botao-voltar:hover {
+    background-color: #2c3e50;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+/* Efeito ao clicar (Active) */
+.botao-voltar:active {
+    background-color: #1a2533;
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------------------------------------------------- */
+/* ASSISTENTE DE IA (AI ASSISTANT) - ÍCONE E CHAT */
+/* ---------------------------------------------------- */
+
+.ai-assistant-container {
+    /* Posição Fixa no canto inferior direito */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100;
+    /* Garante que fique acima de todos os elementos */
+}
+
+.ai-icon {
+    /* Estilo do Botão/Ícone */
+    width: 70px;
+    height: 70px;
+    background-color: #000000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    /* Configuração da Imagem (AJUSTE O CAMINHO DA IMAGEM SE NECESSÁRIO) */
+    /* Exemplo: url('../imagem car/logo-turbocars.png') se a imagem estiver 
+       em relação a src/pagamento.css */
+    background-image: url('../imagem car/logo-turbocars.png');
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /* Efeito Moderno (Brilho Verde) */
+    border: 2px solid #00FF00;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+    transition: all 0.3s ease;
+}
+
+.ai-icon:hover {
+    box-shadow: 0 0 25px rgba(0, 255, 0, 1);
+    transform: scale(1.1);
+}
+
+/* JANELA DE CHAT */
+.ai-chat-window {
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    bottom: 85px;
+    right: 0;
+
+    background-color: #1A1A1A;
+    border-radius: 10px;
+    border: 1px solid #00FF00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+
+    display: none;
+    /* INICIALMENTE INVISÍVEL */
+    flex-direction: column;
+    overflow: hidden;
+
+    transform: scale(0.9);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.ai-chat-window.open {
+    display: flex;
+    transform: scale(1);
+    opacity: 1;
+}
+
+.chat-header {
+    background-color: #00FF00;
+    color: #000;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    cursor: default;
+}
+
+.chat-header h4 {
+    margin: 0;
+    font-size: 1em;
+}
+
+.chat-header .close-btn {
+    font-size: 1.5em;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.chat-body {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #222;
+    /* Corrigindo fundo do corpo do chat */
+}
+
+.message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    font-size: 0.9em;
+}
+
+.bot-message {
+    background-color: #333;
+    color: #fff;
+    align-self: flex-start;
+}
+
+.chat-footer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #00FF00;
+}
+
+.chat-footer input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #111;
+    color: #fff;
+    outline: none;
+}
+
+.chat-footer button {
+    background-color: #FF0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.chat-footer button:hover {
+    background-color: #cc0000;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .ai-assistant-container {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .ai-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .ai-chat-window {
+        width: 90vw;
+        height: 60vh;
+        bottom: 80px;
+        right: 5vw;
+        left: 5vw;
+    }
+}

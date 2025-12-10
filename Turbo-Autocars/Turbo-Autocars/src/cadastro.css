@@ -1,0 +1,414 @@
+/* ======================================= */
+/* 🚀 CADASTRO.CSS - ESTILOS OTIMIZADOS */
+/* ======================================= */
+
+/* 1. Reset Básico e Fundo */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #eef2f6; /* Fundo mais suave */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 2. Container Principal (Form Card) */
+.container-cadastro {
+    background-color: #ffffff;
+    padding: 35px;
+    border-radius: 16px; /* Bordas mais suaves */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra mais profunda e suave */
+    width: 100%;
+    max-width: 480px; /* Largura levemente maior */
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Animação para entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 3. Cabeçalho */
+.cadastro-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.cadastro-header h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    color: #0d7377; /* Verde/Ciano corporativo */
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 2.2em;
+    letter-spacing: 0.5px;
+}
+
+.cadastro-header p {
+    color: #666;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+/* 4. Elementos do Formulário */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 0.95em;
+    color: #444;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 12px;
+    border: 1px solid #dcdcdc; /* Borda mais discreta */
+    border-radius: 8px;
+    box-sizing: border-box; 
+    font-size: 1em;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #0d7377; /* Borda destacada com a cor principal */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(13, 115, 119, 0.15); /* Efeito de foco suave */
+    background-color: #f9f9f9;
+}
+
+/* 5. Botão de Submissão */
+.btn-finalizar-cadastro {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    margin-top: 30px;
+    border: none;
+    border-radius: 8px;
+    background-color: #0d7377; /* Cor principal forte */
+    color: #fff;
+    font-size: 1.15em;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s;
+    box-shadow: 0 4px 10px rgba(13, 115, 119, 0.3);
+}
+
+.btn-finalizar-cadastro:hover {
+    background-color: #1a8a8e;
+    transform: translateY(-1px); /* Pequeno efeito 3D ao passar o mouse */
+}
+
+.btn-finalizar-cadastro:active {
+    transform: translateY(0);
+}
+
+/* 6. Link Voltar */
+.link-voltar {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    color: #4a90e2; /* Azul padrão para links */
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9em;
+}
+
+.link-voltar:hover {
+    text-decoration: underline;
+}
+
+/* 7. Responsividade (Adaptando para telas pequenas) */
+@media (max-width: 500px) {
+    body {
+        padding: 10px;
+    }
+    .container-cadastro {
+        padding: 25px 20px;
+        border-radius: 8px;
+    }
+    .cadastro-header h1 {
+        font-size: 1.8em;
+    }
+    .btn-finalizar-cadastro {
+        font-size: 1.05em;
+    }
+}
+.ai-assistant-container {
+    /* Posição Fixa no canto inferior direito - JÁ EXISTE */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100; /* Garante que fique acima de tudo */
+    /* Removemos cursor: pointer daqui, o ícone já tem */
+}
+
+/* Configuração inicial da janela de chat */
+.ai-chat-window {
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    bottom: 85px; /* Acima do ícone (70px + margem) */
+    right: 0;
+    
+    background-color: #1A1A1A; /* Fundo escuro */
+    border-radius: 10px;
+    border: 1px solid #00FF00; /* Borda fina verde */
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5); /* Brilho verde */
+    
+    display: none; /* INICIALMENTE INVISÍVEL - CONTROLADO PELO JS */
+    flex-direction: column;
+    overflow: hidden;
+    
+    transform: scale(0.9); /* Começa um pouco menor */
+    opacity: 0; /* Começa transparente */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Estado visível da janela */
+.ai-chat-window.open {
+    display: flex;
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Cabeçalho do Chat */
+.chat-header {
+    background-color: #00FF00; /* Verde vibrante */
+    color: #000;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    cursor: default;
+}
+
+.chat-header h4 {
+    margin: 0;
+    font-size: 1em;
+}
+
+.chat-header .close-btn {
+    font-size: 1.5em;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Corpo do Chat (Mensagens) */
+.chat-body {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    font-size: 0.9em;
+}
+
+.bot-message {
+    background-color: #333;
+    color: #fff;
+    align-self: flex-start;
+}
+
+/* Rodapé (Input e Botão) */
+.chat-footer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #00FF00;
+}
+
+.chat-footer input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #111;
+    color: #fff;
+    outline: none;
+}
+
+.chat-footer button {
+    background-color: #FF0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.chat-footer button:hover {
+    background-color: #cc0000;
+}
+
+/* Ajuste de responsividade para a janela de chat */
+@media (max-width: 768px) {
+    .ai-chat-window {
+        width: 90vw; /* Ocupa a maior parte da tela em dispositivos móveis */
+        height: 60vh;
+        bottom: 80px;
+        right: 5vw; /* Centraliza a janela */
+        left: 5vw;
+    }
+}
+/* ---------------------------------------------------- */
+/* ASSISTENTE DE IA (AI ASSISTANT) - ÍCONE E CHAT */
+/* ---------------------------------------------------- */
+
+.ai-assistant-container {
+    /* Posição Fixa no canto inferior direito */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100; /* Garante que fique acima de todos os elementos */
+}
+
+.ai-icon {
+    /* Estilo do Botão/Ícone */
+    width: 70px;
+    height: 70px;
+    background-color: #000000;
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    
+    /* Configuração da Imagem (AJUSTE O CAMINHO DA IMAGEM SE NECESSÁRIO) */
+    /* Exemplo: url('../imagem car/logo-turbocars.png') se a imagem estiver 
+       em relação a src/pagamento.css */
+    background-image: url('../imagem car/logo-turbocars.png'); 
+    background-size: 80%; 
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /* Efeito Moderno (Brilho Verde) */
+    border: 2px solid #00FF00;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+    transition: all 0.3s ease;
+}
+
+.ai-icon:hover {
+    box-shadow: 0 0 25px rgba(0, 255, 0, 1);
+    transform: scale(1.1);
+}
+
+/* JANELA DE CHAT */
+.ai-chat-window {
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    bottom: 85px; 
+    right: 0;
+    
+    background-color: #1A1A1A;
+    border-radius: 10px;
+    border: 1px solid #00FF00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    
+    display: none; /* INICIALMENTE INVISÍVEL */
+    flex-direction: column;
+    overflow: hidden;
+    
+    transform: scale(0.9);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.ai-chat-window.open {
+    display: flex;
+    transform: scale(1);
+    opacity: 1;
+}
+
+.chat-header {
+    background-color: #00FF00;
+    color: #000;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    cursor: default;
+}
+
+.chat-header h4 { margin: 0; font-size: 1em; }
+.chat-header .close-btn { font-size: 1.5em; cursor: pointer; font-weight: bold; }
+
+.chat-body {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #222; /* Corrigindo fundo do corpo do chat */
+}
+
+.message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    font-size: 0.9em;
+}
+
+.bot-message {
+    background-color: #333;
+    color: #fff;
+    align-self: flex-start;
+}
+
+.chat-footer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #00FF00;
+}
+
+.chat-footer input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #111;
+    color: #fff;
+    outline: none;
+}
+
+.chat-footer button {
+    background-color: #FF0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.chat-footer button:hover {
+    background-color: #cc0000;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .ai-assistant-container { bottom: 20px; right: 20px; }
+    .ai-icon { width: 60px; height: 60px; }
+    .ai-chat-window {
+        width: 90vw; height: 60vh; bottom: 80px; right: 5vw; left: 5vw;
+    }
+}

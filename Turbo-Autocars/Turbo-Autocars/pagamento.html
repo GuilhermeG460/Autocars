@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finalizar Compra</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./src/pagamento.css">
+</head>
+<body>
+    
+<div class="container-pagamento">
+    <a href="./catalogo.html" class="botao-voltar">
+        <i class="fas fa-arrow-left"></i> Voltar para o Catálogo
+    </a>
+<header>
+<h1>Finalizar Compra</h1>
+<div class="car-info-display">
+<div id="car-image-container" class="car-image-container">
+</div>
+<p>Veículo: <strong id="car-name"></strong></p>
+</div>
+</header>
+
+<section class="payment-details">
+<h2>2. Detalhes do Pagamento</h2>
+<form id="payment-form">
+<div class="form-group">
+<label for="installments">Parcelamento</label>
+<select id="installments" name="installments">
+</select>
+</div>
+</form>
+ </section>
+
+ <hr>
+
+ <section class="order-summary">
+ <h2>3. Resumo do Pedido</h2>
+ <div class="summary-item" id="item-subtotal">
+ <span>Valor do Veículo:</span>
+ <span id="subtotal-display">R$ 0,00</span>
+ </div>
+ <div class="summary-item" id="item-shipping">
+ <span>Frete (Entrega):</span>
+ <span id="shipping-display">R$ 0,00</span>
+ </div>
+ <div class="summary-total">
+ <strong>Total a Pagar:</strong>
+ <strong id="total-display">R$ 0,00</strong> 
+ </div>
+
+ <p style="margin-top: 10px;">Parcela Selecionada: <strong id="parcel-value-display"></strong></p>
+
+ <button type="submit" class="btn-comprar vermelho" form="payment-form">
+Pagar Agora (<span id="payment-button-text">R$ 0,00</span>)
+</button>
+
+  <button type="button" id="btn-cadastro" class="btn-cadastro verde">
+frete-gratis
+ </button>
+
+</section>
+</div>
+
+<script>
+
+    
+    // NOVO: MAPA PARA BUSCAR O CAMINHO DA IMAGEM
+    const CAR_IMAGE_MAP = {
+        'Mercedes class c': './imagem car/photo-1704476945065-18a15cdbfce2.jpg',
+        'Nissan GT-R': './imagem car/desktop-wallpaper-white-car-background.jpg',
+        'Volkswagen Gol G5': './imagem car/Volkswagen_Red_Metallic_White_background_592789_1280x853.jpg',
+        'Fiat Pulse': './imagem car/Fiat-Pulse.webp',
+        'Renault Kwid': './imagem car/Kwid.jpg',
+        'Volkswagen polo': './imagem car/Volkswagen_Polo_Orange_White_background_528204_1280x815.jpg',
+        'Hyundai tucson': './imagem car/Hyundai_Tucson_White_background_Light_Blue_515412_1280x720.jpg',
+        'Ram 2500': './imagem car/Ranger.webp',
+        // Adicione outros carros conforme necessário
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const nomeCarro = params.get('nome');
+        let valorCarro = parseFloat(params.get('valor'));
+        
+        // NOVO: Busca o URL da imagem no mapa usando o nome do carro
+        const imagemCarroUrl = CAR_IMAGE_MAP[nomeCarro] || 'https://i.imgur.com/w9c5A7i.jpeg'; // Fallback
+
+        // Variáveis de controle
+        let valorFrete = 5000; 
+        const jurosPorMes = 0.02; 
+        const opcoesParcelas = [1, 3, 6, 12, 24, 36, 48, 60];
+        const totalBruto = valorCarro || 0; 
+        
+        // Elementos DOM
+        const nomeCarroElement = document.getElementById('car-name');
+        const carImageContainer = document.getElementById('car-image-container');
+        const subtotalDisplay = document.getElementById('subtotal-display');
+        const shippingDisplay = document.getElementById('shipping-display');
+        const totalDisplay = document.getElementById('total-display');
+        const installmentsSelect = document.getElementById('installments');
+        const parcelValueDisplay = document.getElementById('parcel-value-display');
+        const paymentButtonText = document.getElementById('payment-button-text');
+        // Usamos o ID aqui:
+        const btnCadastro = document.getElementById('btn-cadastro');
+        const itemShipping = document.getElementById('item-shipping');
+
+        // ***********************************************
+        // NOVO: CHECA O LOCALSTORAGE EM VEZ DO PARÂMETRO URL
+        const freteAplicadoViaStorage = localStorage.getItem('freteGratisAplicado') === 'true';
+        // ***********************************************
+        
+        // O parâmetro 'cadastro_sucesso' não é mais o principal, mas podemos usá-lo se quiser
+        // para dar feedback imediato, embora o localStorage seja mais robusto.
+        
+        if (freteAplicadoViaStorage) {
+            valorFrete = 0; // Zera o frete
+            btnCadastro.textContent = 'Frete Grátis Aplicado!';
+            btnCadastro.disabled = true;
+            btnCadastro.classList.remove('verde');
+            btnCadastro.classList.add('cinza-desabilitado'); 
+            
+            // ***********************************************
+            // NOVO: LIMPA O LOCALSTORAGE APÓS APLICAÇÃO
+            // Isso garante que o Frete Grátis não se aplique a outras compras.
+            localStorage.removeItem('freteGratisAplicado');
+            // ***********************************************
+        }
+
+        // --- Função para Carregar a Imagem ---
+        function loadCarImage(url, nome) {
+            const img = document.createElement('img');
+            img.src = url;
+            img.alt = `Foto do veículo: ${nome}`;
+            img.classList.add('car-photo');
+            carImageContainer.appendChild(img);
+        }
+
+        // --- Funções de Cálculo e Formatação ---
+
+        function formatarMoeda(valor) {
+            return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        function calcularParcela(valorPrincipal, taxaMensal, numParcelas) {
+            if (numParcelas === 1) return valorPrincipal;
+            const i = taxaMensal;
+            const n = numParcelas;
+            // Fómula da Tabela Price
+            const powFactor = Math.pow(1 + i, n);
+            return valorPrincipal * (i * powFactor) / (powFactor - 1);
+        }
+
+        function updateAllCalculations() {
+            // O valorFrete aqui já será 0 se o frete foi aplicado
+            const valorBaseCalculo = totalBruto + valorFrete; 
+            let optionsHTML = '';
+            
+            opcoesParcelas.forEach(parcela => {
+                let valorParcela;
+                let textoOpcao;
+                let valorTotalComJuros = valorBaseCalculo;
+
+                if (parcela <= 12) {
+                    valorParcela = valorBaseCalculo / parcela;
+                    valorTotalComJuros = valorBaseCalculo; 
+                    textoOpcao = `${parcela}x de ${formatarMoeda(valorParcela)} (Sem Juros)`;
+                } else {
+                    valorParcela = calcularParcela(valorBaseCalculo, jurosPorMes, parcela);
+                    valorTotalComJuros = valorParcela * parcela; 
+                    textoOpcao = `${parcela}x de ${formatarMoeda(valorParcela)} (Total: ${formatarMoeda(valorTotalComJuros)})`;
+                }
+                
+                optionsHTML += `<option value="${parcela}" data-parcel-value="${valorParcela.toFixed(2)}" data-total-value="${valorTotalComJuros.toFixed(2)}">${textoOpcao}</option>`;
+            });
+
+            installmentsSelect.innerHTML = optionsHTML;
+            updateSummary(); 
+        }
+
+        function updateSummary() {
+            const selectedOption = installmentsSelect.options[installmentsSelect.selectedIndex];
+
+            if (!selectedOption) {
+                totalDisplay.textContent = formatarMoeda(totalBruto + valorFrete); 
+                parcelValueDisplay.textContent = 'N/A';
+                paymentButtonText.textContent = formatarMoeda(0);
+                return;
+            }
+
+            const valorParcelaAtual = parseFloat(selectedOption.getAttribute('data-parcel-value'));
+            const valorTotalComJuros = parseFloat(selectedOption.getAttribute('data-total-value'));
+            const numParcelas = parseInt(selectedOption.value);
+            
+            totalDisplay.textContent = formatarMoeda(valorTotalComJuros); 
+
+            if (numParcelas === 1) {
+                parcelValueDisplay.textContent = `${formatarMoeda(valorParcelaAtual)} à vista`;
+                paymentButtonText.textContent = formatarMoeda(valorParcelaAtual);
+            } else {
+                parcelValueDisplay.textContent = `${numParcelas}x de ${formatarMoeda(valorParcelaAtual)}`;
+                paymentButtonText.textContent = `1ª Parcela de ${formatarMoeda(valorParcelaAtual)}`;
+            }
+
+            shippingDisplay.textContent = formatarMoeda(valorFrete);
+            
+            // Aplica estilos de Frete Grátis
+            if (valorFrete === 0) {
+                itemShipping.classList.add('frete-gratis-aplicado');
+            } else {
+                itemShipping.classList.remove('frete-gratis-aplicado');
+            }
+        }
+        
+        // --- Função de Redirecionamento ---
+        function redirectToCadastro() {
+            if (!btnCadastro.disabled) {
+                // Passa apenas nome e valor do carro
+                window.location.href = `cadastro.html?nome=${encodeURIComponent(nomeCarro || '')}&valor=${valorCarro || 0}`;
+            }
+        }
+
+
+        // 1. Preencher informações iniciais e carregar imagem
+        loadCarImage(imagemCarroUrl, nomeCarro);
+        
+        nomeCarroElement.textContent = nomeCarro || 'Carro de Teste'; 
+        valorCarro = valorCarro || 15000; 
+        subtotalDisplay.textContent = formatarMoeda(totalBruto);
+        
+        // 2. Inicializar cálculos e resumo
+        if (opcoesParcelas.length > 0 && !isNaN(valorCarro)) {
+            updateAllCalculations();
+        } else {
+            totalDisplay.textContent = formatarMoeda(0);
+        }
+
+        // Listeners
+        installmentsSelect.addEventListener('change', updateSummary);
+        btnCadastro.addEventListener('click', redirectToCadastro); 
+    });
+
+    </script>
+
+            <div class="ai-assistant-container" aria-label="Assistente de Inteligência Artificial Turbo Auto Car">
+    <div class="ai-icon" id="ai-toggle"></div> 
+
+    <div class="ai-chat-window" id="ai-window">
+        <div class="chat-header">
+            <h4>Assistente Turbo Auto Car 🚗</h4>
+            <span class="close-btn">&times;</span>
+        </div>
+        <div class="chat-body">
+            <p class="message bot-message">Olá! Sou seu assistente virtual. Como posso te ajudar hoje?</p>
+            </div>
+        <div class="chat-footer">
+            <input type="text" placeholder="Digite sua mensagem...">
+            <button>Enviar</button>
+        </div>
+    </div>
+    </div>
+    <script src="./src/ai-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,459 @@
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Fundo Geral Escuro */
+body {
+    background: linear-gradient(135deg, #000000 0%, #2c3e50 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Cabeçalho */
+.catalogo-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee; 
+    padding-bottom: 20px;
+    gap: 20px;
+}
+
+.catalogo-header h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 20px 750px 20px 0;    
+    text-decoration: underline;
+    /* Resetando estilos de h1 do Pagamento para o H1 do Catálogo */
+    border-bottom: none;
+    padding-bottom: 0;
+    color: #eee;
+}
+
+.catalogo-header .logo {
+    width: 150px; 
+    height: 150px; 
+    background-color: #f00; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow: hidden;
+    position: relative;
+}
+/* Grid dos Cards */
+.cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center; /* Centraliza os cards */
+}
+
+/* Estilo Individual do Card */
+.card {
+    /* Gradiente Azul ciano para Azul escuro */
+    background: linear-gradient(180deg, #ffffff 0%, #1765ad 100%); 
+    width: 220px;
+    height: 320px;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Número no canto superior esquerdo */
+.card-number {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #000;
+}
+
+/* Área da Imagem Central */
+.card-image {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Estilização dos ícones (substitutos das imagens) */
+.icon-placeholder {
+    font-size: 5rem;
+    color: rgba(255, 255, 255, 0.3); /* Transparente parecendo marca d'agua */
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3));
+    color: #ddd; /* Cor sólida para simular a peça */
+}
+
+/* Se você usar imagens reais, use esta classe na tag <img> */
+.card-image img {
+    width: 80%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.4));
+}
+
+/* Botão Preto inferior */
+.card-btn {
+    background-color: #1a1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 25px; /* Formato pílula */
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    width: 90%;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.card-btn:hover {
+    background-color: #333;
+}
+/* --- Estilos para o Botão Voltar --- */
+
+.botao-voltar {
+    /* Aparência de Botão */
+    display: inline-flex; /* Usar flex para alinhar o texto e o ícone */
+    align-items: center;
+    gap: 8px; /* Espaço entre o ícone e o texto */
+    
+    padding: 10px 15px;
+    margin: 20px 0; /* Espaço acima e abaixo do botão */
+    border-radius: 5px; 
+    cursor: pointer;
+    text-decoration: none; 
+    font-weight: 600;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+
+    /* Cores e Estilos */
+    background-color: #34495e; /* Cor escura, discreta e profissional */
+    color: white; 
+    border: 1px solid #2c3e50;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+/* Ícone de seta */
+.botao-voltar .fas {
+    font-size: 14px;
+}
+
+/* Efeito ao passar o mouse (Hover) */
+.botao-voltar:hover {
+    background-color: #2c3e50; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+    transform: translateY(-1px);
+}
+
+/* Efeito ao clicar (Active) */
+.botao-voltar:active {
+    background-color: #1a2533; 
+    transform: translateY(0); 
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Exemplo de posicionamento (depende do seu layout main-container) */
+.main-container {
+    /* Garanta que o container principal centralize ou organize o conteúdo se necessário */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Fim dos Estilos do Botão Voltar --- */
+/* ---------------------------------------------------- */
+/* ASSISTENTE DE IA (AI ASSISTANT) - ÍCONE E CHAT */
+/* ---------------------------------------------------- */
+
+.ai-assistant-container {
+    /* Posição Fixa no canto inferior direito */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100; /* Garante que fique acima de todos os elementos */
+}
+
+.ai-icon {
+    /* Estilo do Botão/Ícone */
+    width: 70px;
+    height: 70px;
+    background-color: #000000;
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    
+    /* Configuração da Imagem (AJUSTE O CAMINHO DA IMAGEM SE NECESSÁRIO) */
+    background-image: url('./imagem car/logo-turbocars.png'); 
+    background-size: 80%; 
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /* Efeito Moderno (Brilho Verde) */
+    border: 2px solid #00FF00;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+    transition: all 0.3s ease;
+}
+
+.ai-icon:hover {
+    box-shadow: 0 0 25px rgba(0, 255, 0, 1);
+    transform: scale(1.1);
+}
+
+/* JANELA DE CHAT */
+.ai-chat-window {
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    bottom: 85px; 
+    right: 0;
+    
+    background-color: #1A1A1A;
+    border-radius: 10px;
+    border: 1px solid #00FF00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    
+    display: none; /* INICIALMENTE INVISÍVEL */
+    flex-direction: column;
+    overflow: hidden;
+    
+    transform: scale(0.9);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.ai-chat-window.open {
+    display: flex;
+    transform: scale(1);
+    opacity: 1;
+}
+
+.chat-header {
+    background-color: #00FF00;
+    color: #000;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    cursor: default;
+}
+
+.chat-header h4 { margin: 0; font-size: 1em; }
+.chat-header .close-btn { font-size: 1.5em; cursor: pointer; font-weight: bold; }
+
+.chat-body {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    font-size: 0.9em;
+}
+
+.bot-message {
+    background-color: #333;
+    color: #fff;
+    align-self: flex-start;
+}
+
+.chat-footer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #00FF00;
+}
+
+.chat-footer input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #111;
+    color: #fff;
+    outline: none;
+}
+
+.chat-footer button {
+    background-color: #FF0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.chat-footer button:hover {
+    background-color: #cc0000;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .ai-assistant-container { bottom: 20px; right: 20px; }
+    .ai-icon { width: 60px; height: 60px; }
+    .ai-chat-window {
+        width: 90vw; height: 60vh; bottom: 80px; right: 5vw; left: 5vw;
+    }
+}
+.ai-assistant-container {
+    /* Posição Fixa no canto inferior direito - JÁ EXISTE */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100; /* Garante que fique acima de tudo */
+    /* Removemos cursor: pointer daqui, o ícone já tem */
+}
+
+/* Configuração inicial da janela de chat */
+.ai-chat-window {
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    bottom: 85px; /* Acima do ícone (70px + margem) */
+    right: 0;
+    
+    background-color: #1A1A1A; /* Fundo escuro */
+    border-radius: 10px;
+    border: 1px solid #00FF00; /* Borda fina verde */
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5); /* Brilho verde */
+    
+    display: none; /* INICIALMENTE INVISÍVEL - CONTROLADO PELO JS */
+    flex-direction: column;
+    overflow: hidden;
+    
+    transform: scale(0.9); /* Começa um pouco menor */
+    opacity: 0; /* Começa transparente */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Estado visível da janela */
+.ai-chat-window.open {
+    display: flex;
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Cabeçalho do Chat */
+.chat-header {
+    background-color: #00FF00; /* Verde vibrante */
+    color: #000;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    cursor: default;
+}
+
+.chat-header h4 {
+    margin: 0;
+    font-size: 1em;
+}
+
+.chat-header .close-btn {
+    font-size: 1.5em;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Corpo do Chat (Mensagens) */
+.chat-body {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    font-size: 0.9em;
+}
+
+.bot-message {
+    background-color: #333;
+    color: #fff;
+    align-self: flex-start;
+}
+
+/* Rodapé (Input e Botão) */
+.chat-footer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #00FF00;
+}
+
+.chat-footer input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #111;
+    color: #fff;
+    outline: none;
+}
+
+.chat-footer button {
+    background-color: #FF0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.chat-footer button:hover {
+    background-color: #cc0000;
+}
+
+/* Ajuste de responsividade para a janela de chat */
+@media (max-width: 768px) {
+    .ai-chat-window {
+        width: 90vw; /* Ocupa a maior parte da tela em dispositivos móveis */
+        height: 60vh;
+        bottom: 80px;
+        right: 5vw; /* Centraliza a janela */
+        left: 5vw;
+    }
+}

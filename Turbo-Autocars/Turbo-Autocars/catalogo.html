@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Carros</title>
+    <link rel="stylesheet" href="./src/cardapio.css"> <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+    <div class="catalogo-container">
+        <header class="catalogo-header">
+            <h1>Catálogo de Carros</h1>
+            <a href="inicio.html">
+            <img src="./imagem car/logo-img.png" alt="Logo da Marca" class="logo">
+            </a>
+        </header>
+        <a href="inicio.html" class="botao-voltar">
+            <i class="fas fa-arrow-left"></i> Voltar para o Início
+        </a>
+
+        <div class="carros-grid">
+            
+            <div class="carro-card">
+                <img src="./imagem car/photo-1704476945065-18a15cdbfce2.jpg" alt="Mercedes class c">
+                <h2>Mercedes class c</h2>
+                <h2>332.400R$</h2>
+                <a href="#" onclick="comprarCarro('Mercedes class c', 332400)">
+                <button class="btn-comprar vermelho">comprar</button>
+                </a>
+                <a href="#" onclick="mostrarInformacoes('Mercedes class c')">
+                    <button class="btn-informacoes">Informações</button>
+                </a>
+            </div>
+
+            <div class="carro-card">
+                <img src="./imagem car/desktop-wallpaper-white-car-background.jpg" alt="Nissan GT-R">
+                <h2>Nissan GT-R</h2>
+                <h2>1.500.000R$</h2>
+                <a href="#" onclick="comprarCarro('Nissan GT-R', 1500000)">
+                    <button class="btn-comprar vermelho">comprar</button>
+                </a>
+                <a href="#" onclick="mostrarInformacoes('Nissan GT-R')">
+                    <button class="btn-informacoes">Informações</button>
+                </a>
+            </div>
+
+            <div class="carro-card">
+                <img src="./imagem car/Volkswagen_Red_Metallic_White_background_592789_1280x853.jpg" alt="Volkswagen Gol G5">
+                <h2>Volkswagen Gol G5</h2>
+                <h2>25.400R$</h2>
+                <a href="#" onclick="comprarCarro('Volkswagen Gol G5', 25400)">
+                    <button class="btn-comprar vermelho">comprar</button>
+                </a>
+                <a href="#" onclick="mostrarInformacoes('Volkswagen Gol G5')">
+                    <button class="btn-informacoes">Informações</button>
+                </a>
+            </div>
+
+            <div class="carro-card">
+                <img src="./imagem car/Fiat-Pulse.webp" alt="Fiat Pulse">
+                <h2>Fiat Pulse</h2>
+                <h2>126.490R$</h2>
+                <a href="#" onclick="comprarCarro('Fiat Pulse', 126490)">
+                    <button class="btn-comprar vermelho">comprar</button>
+                </a>
+                <a href="#" onclick="mostrarInformacoes('Fiat Pulse')">
+                    <button class="btn-informacoes">Informações</button>
+                </a>
+            </div>
+
+            <div class="carro-card">
+                <img src="./imagem car/Kwid.jpg" alt="Renault Kwid">
+                <h2>Renault Kwid</h2>
+                <h2>69.900R$</h2>
+                <a href="#" onclick="comprarCarro('Renault Kwid', 69900)">
+                    <button class="btn-comprar vermelho">comprar</button>
+                </a>
+                <a href="#" onclick="mostrarInformacoes('Renault Kwid')">
+                    <button class="btn-informacoes">Informações</button>
+                </a>
+            </div>
+
+            <div class="carro-card">
+                <img src="./imagem car/Volkswagen_Polo_Orange_White_background_528204_1280x815.jpg" alt="Volkswagen polo">
+                <h2>Volkswagen polo</h2>
+                <h2>92.660R$</h2>
+                <a href="#" onclick="comprarCarro('Volkswagen polo', 92660)">
+                    <button class="btn-comprar vermelho">comprar</button>
+                </a>
+                <a href="#" onclick="mostrarInformacoes('Volkswagen polo')">
+                    <button class="btn-informacoes">Informações</button>
+                </a>
+            </div>
+
+            <div class="carro-card">
+                <img src="./imagem car/Hyundai_Tucson_White_background_Light_Blue_515412_1280x720.jpg" alt="Hyundai tucson">
+                <h2>Hyundai tucson</h2>
+                <h2>82.900R$</h2>
+                <a href="#" onclick="comprarCarro('Hyundai tucson', 82900)">
+                    <button class="btn-comprar vermelho">comprar</button>
+                </a>
+                <a href="#" onclick="mostrarInformacoes('Hyundai tucson')">
+                    <button class="btn-informacoes">Informações</button>
+                </a>
+            </div>
+
+            <div class="carro-card">
+                <img src="./imagem car/Ranger.webp" alt="Ram 2500">
+                <h2>Ram 2500</h2>
+                <h2>399.900R$</h2>
+                <a href="#" onclick="comprarCarro('Ram 2500', 399900)">
+                    <button class="btn-comprar vermelho">comprar</button>
+                </a>
+                <a href="#" onclick="mostrarInformacoes('Ram 2500')">
+                    <button class="btn-informacoes">Informações</button>
+                </a>
+            </div> 
+
+        </div>
+    </div>
+    
+    <div class="ai-assistant-container" aria-label="Assistente de Inteligência Artificial Turbo Auto Car">
+        <div class="ai-icon" id="ai-toggle"></div> 
+
+        <div class="ai-chat-window" id="ai-window">
+            <div class="chat-header">
+                <h4>Assistente Turbo Auto Car 🚗</h4>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="chat-body">
+                <p class="message bot-message">Olá! Sou seu assistente virtual. Como posso te ajudar hoje?</p>
+            </div>
+            <div class="chat-footer">
+                <input type="text" placeholder="Digite sua mensagem...">
+                <button>Enviar</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function comprarCarro(nome, valor) {
+            const nomeCodificado = encodeURIComponent(nome);
+            window.location.href = `pagamento.html?nome=${nomeCodificado}&valor=${valor}`;
+        }
+        
+        // Dados de Informações dos Carros (Centralizados em um objeto)
+        const carDetails = {
+            'Mercedes class c': `Tipo de Combustível: Gasolina/Híbrido Leve
+Potência: 204 cv a 285 cv (combinada)
+Torque: 30,6 kgf.m a 40,8 kgf.m
+Porta-Malas: 455 a 480 Litros.`,
+            'Nissan GT-R': `Tipo de Combustível: Gasolina
+Motor: 3.8L V6 Twin-Turbo (VR38DETT)
+Potência: 572 cv a 600 cv
+Torque: Cerca de 65 kgf.m a 66,5 kgf.m
+Tração: Integral (AWD).`,
+            'Volkswagen Gol G5': `Tipo de Combustível: Flex (Etanol e Gasolina)
+Potência: 72/76 cv (1.0) ou 101/104 cv (1.6)
+Torque: 10,6 kgf.m a 15,6 kgf.m
+Porta-Malas: 285 Litros.`,
+            'Fiat Pulse': `Tipo de Combustível: Flex (Etanol e Gasolina)
+Potência: 98/107 cv (1.3) ou 125/130 cv (1.0 Turbo)
+Torque: 13,7 kgf.m a 20,4 kgf.m
+Porta-Malas: 370 Litros.`,
+            'Renault Kwid': `Tipo de Combustível: Flex (Etanol e Gasolina)
+Motor: 1.0 SCe de 3 cilindros
+Potência: 68/71 cv
+Torque: 9,4/10,0 kgf.m
+Porta-Malas: 290 Litros.`,
+            'Volkswagen polo': `Tipo de Combustível: Flex (Etanol e Gasolina)
+Potência: 77/84 cv a 150 cv
+Torque: 10,3 kgf.m a 25,5 kgf.m
+Porta-Malas: 300 Litros.`,
+            'Hyundai tucson': `Tipo de Combustível: Gasolina
+Motor: 1.6 T-GDI (Turbo)
+Potência: 177 cv
+Torque: 27,0 kgf.m
+Porta-Malas: 513 Litros.`,
+            'Ram 2500': `Tipo de Combustível: Diesel
+Motor: 6.7L Cummins Turbodiesel
+Potência: 377 cv
+Torque: 1150 Nm (117,2 kgf.m)
+Caçamba: 1.280 Litros.`
+        };
+
+        // Função ÚNICA para mostrar informações, usando o objeto carDetails
+        function mostrarInformacoes(nomeDoCarro) {
+            const info = carDetails[nomeDoCarro];
+            if (info) {
+                alert(`Informações sobre o ${nomeDoCarro}:\n\n${info}`);
+            } else {
+                alert(`Detalhes do ${nomeDoCarro} não encontrados.`);
+            }
+        }
+    </script>
+    
+    <script src="./src/ai-script.js"></script>
+</body>
+</html>

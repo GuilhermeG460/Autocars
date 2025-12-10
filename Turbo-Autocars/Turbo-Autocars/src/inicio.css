@@ -1,0 +1,405 @@
+/* Seu código CSS: inicio.css */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #000; /* Fundo preto */
+    color: #fff; /* Texto branco */
+    overflow: hidden; /* Prevent scrollbar from background elements */
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    
+}
+
+.background-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow clicks to pass through */
+    z-index: 0;
+}
+
+.red-shape-top-left {
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 80%;
+    height: 80%;
+    background: linear-gradient(135deg, #FF0000 0%, rgba(255, 0, 0, 0) 70%);
+    transform: rotate(-30deg);
+    opacity: 0.8;
+}
+
+.red-shape-bottom-right {
+    position: absolute;
+    bottom: -20%;
+    right: -20%;
+    width: 80%;
+    height: 80%;
+    background: linear-gradient(315deg, #FF0000 0%, rgba(255, 0, 0, 0) 70%);
+    transform: rotate(-30deg);
+    opacity: 0.8;
+}
+
+header {
+    position: absolute;
+    top: 20px;
+    width: 90%;
+    display: flex;
+    justify-content: flex-end; /* Alinha a nav à direita */
+    align-items: center;
+    gap: 30px;
+    z-index: 1;
+}
+
+header nav a {
+    color: #fff; /* Contraste OK (Branco sobre Preto) */
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.9em;
+    margin-right: 20px;
+}
+
+/* Regras para o logo no seu CSS não batiam com o HTML. Ajustei o alvo aqui */
+.logo {
+    width: 150px; /* Adjust as needed */
+    height: 150px; /* Adjust as needed */
+    /* Removi estilos de placeholder que não funcionam com a tag <img> */
+    object-fit: contain; /* Garante que a imagem caiba no espaço */
+}
+
+.main-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    text-align: center;
+    margin-top: -50px; /* Adjust to move content up */
+}
+
+.top-banner {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #ccc;
+    font-size: 0.8em;
+}
+
+/* O ícone do carro no seu CSS não tem correspondência clara no HTML, vou focar nos elementos existentes. */
+
+
+.main-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 5em;
+    font-weight: 700;
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 40px;
+}
+
+.main-title .turbo {
+    color: #FF0000; /* Vermelho sobre Preto: Contraste OK (8.79:1) */
+    margin-right: 15px;
+}
+
+.main-title .autocar {
+    color: #fff; /* Branco sobre Preto: Contraste OK (21:1) */
+    letter-spacing: 2px;
+}
+
+.buy-now-button {
+    background-color: #FF0000;
+    color: #fff;
+    padding: 20px 60px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.buy-now-button:hover {
+    background-color: #cc0000;
+}
+
+/* Adicionando a regra para o link de frete grátis que fizemos antes */
+.frete-gratis {
+    color: #fff; /* Branco sobre Preto: Contraste OK (21:1) */
+    text-decoration: none; /* Remove o sublinhado */
+    margin-top: 15px;
+    display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        top: 10px;
+    }
+
+    header nav a {
+        margin: 0 10px;
+        font-size: 0.8em;
+    }
+
+    .main-title {
+        flex-direction: column;
+        font-size: 3em;
+        margin-bottom: 20px;
+    }
+
+    .main-title .turbo {
+        margin-right: 0;
+    }
+
+    .buy-now-button {
+        padding: 15px 40px;
+        font-size: 1.4em;
+    }
+
+    .red-shape-top-left, .red-shape-bottom-right {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    header nav a {
+        font-size: 0.7em;
+    }
+
+    .main-title {
+        font-size: 2.2em;
+    }
+
+    .buy-now-button {
+        padding: 10px 30px;
+        font-size: 1.2em;
+    }
+}
+.frete-gratis {
+    /* Layout */
+    display: inline-block; /* Para que o fundo e o padding envolvam o texto */
+    padding: 10px 20px;
+    margin-top: 25px;
+    border-radius: 50px; /* Transforma em formato de "cápsula" moderno */
+    
+    /* Tipografia e Cor */
+    color: #FFFFFF; /* Texto Branco (Alto Contraste sobre Fundo Preto) */
+    text-decoration: none; 
+    font-weight: 700;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    
+    /* Efeito Moderno: Brilho/Glow */
+    background-color: rgba(0, 255, 0, 0.1); /* Fundo verde levemente transparente */
+    border: 1px solid #00FF00; /* Borda fina na cor verde neon */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.6); /* Brilho suave (glow) em torno da cápsula */
+    
+    /* Transição para Hover (Acessibilidade + UX) */
+    transition: all 0.3s ease-in-out; 
+}
+
+/* Efeito ao passar o mouse: aumenta o brilho */
+.frete-gratis:hover {
+    background-color: rgba(0, 255, 0, 0.2);
+    box-shadow: 0 0 25px rgba(0, 255, 0, 0.8); /* Aumenta o brilho */
+    transform: translateY(-2px); /* Efeito de elevação sutil */
+}
+/* ---------------------------------------------------- */
+/* ASSISTENTE DE IA (AI ASSISTANT) - COM IMAGEM DE LOGO */
+/* ---------------------------------------------------- */
+
+.ai-assistant-container {
+    /* Posição Fixa no canto inferior direito */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.ai-icon {
+    /* Estilo do Botão/Ícone */
+    width: 70px; /* Aumentado ligeiramente para melhor visualização da logo */
+    height: 70px;
+    
+    background-color: #000000; /* Fundo preto para a logo branca/vermelha */
+    border-radius: 50%; /* Forma circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Configuração da Imagem */
+    background-image: url('./imagem car/logo-turbocars.png'); /* <--- AJUSTE ESTE CAMINHO! */
+    background-size: 80%; /* Ajusta o tamanho da logo dentro do círculo */
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /* Efeito Moderno (Brilho Verde) */
+    border: 2px solid #00FF00; /* Borda fina verde */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.7); /* Sombra/Glow para destacar */
+    transition: all 0.3s ease;
+}
+
+.ai-icon:hover {
+    box-shadow: 0 0 25px rgba(0, 255, 0, 1); /* Aumenta o brilho no hover */
+    transform: scale(1.1); /* Aumenta um pouco no hover */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .ai-assistant-container {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .ai-icon {
+        width: 60px;
+        height: 60px;
+    }
+}
+/* ---------------------------------------------------- */
+/* ASSISTENTE DE IA (AI ASSISTANT) - JANELA DE CHAT */
+/* ---------------------------------------------------- */
+
+.ai-assistant-container {
+    /* Posição Fixa no canto inferior direito - JÁ EXISTE */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100; /* Garante que fique acima de tudo */
+    /* Removemos cursor: pointer daqui, o ícone já tem */
+}
+
+/* Configuração inicial da janela de chat */
+.ai-chat-window {
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    bottom: 85px; /* Acima do ícone (70px + margem) */
+    right: 0;
+    
+    background-color: #1A1A1A; /* Fundo escuro */
+    border-radius: 10px;
+    border: 1px solid #00FF00; /* Borda fina verde */
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5); /* Brilho verde */
+    
+    display: none; /* INICIALMENTE INVISÍVEL - CONTROLADO PELO JS */
+    flex-direction: column;
+    overflow: hidden;
+    
+    transform: scale(0.9); /* Começa um pouco menor */
+    opacity: 0; /* Começa transparente */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Estado visível da janela */
+.ai-chat-window.open {
+    display: flex;
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Cabeçalho do Chat */
+.chat-header {
+    background-color: #00FF00; /* Verde vibrante */
+    color: #000;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    cursor: default;
+}
+
+.chat-header h4 {
+    margin: 0;
+    font-size: 1em;
+}
+
+.chat-header .close-btn {
+    font-size: 1.5em;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Corpo do Chat (Mensagens) */
+.chat-body {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    font-size: 0.9em;
+}
+
+.bot-message {
+    background-color: #333;
+    color: #fff;
+    align-self: flex-start;
+}
+
+/* Rodapé (Input e Botão) */
+.chat-footer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #00FF00;
+}
+
+.chat-footer input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #111;
+    color: #fff;
+    outline: none;
+}
+
+.chat-footer button {
+    background-color: #FF0000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.chat-footer button:hover {
+    background-color: #cc0000;
+}
+
+/* Ajuste de responsividade para a janela de chat */
+@media (max-width: 768px) {
+    .ai-chat-window {
+        width: 90vw; /* Ocupa a maior parte da tela em dispositivos móveis */
+        height: 60vh;
+        bottom: 80px;
+        right: 5vw; /* Centraliza a janela */
+        left: 5vw;
+    }
+}

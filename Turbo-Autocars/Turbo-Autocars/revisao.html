@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento Revisão - Auto Car</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="src/revisao.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <header class="catalogo-header">
+            <h1>Catálogo de Carros</h1>
+            <a href="inicio.html">
+            <img src="./imagem car/logo-img.png" alt="Logo da Marca" class="logo">
+            </a>
+        </header>
+
+        <a href="inicio.html" class="botao-voltar">
+            <i class="fas fa-arrow-left"></i> Voltar para o Início
+        </a>
+        <div class="cards-wrapper">
+
+            <div class="card">
+                <span class="card-number">01</span>
+                <div class="card-image">
+                    <i class="fa-solid fa-engine" style="display: none;"></i> 
+                    <img src="./imagem car/motor2.png" alt="">
+                </div>
+                <button class="card-btn">Revisão Motor</button>
+            </div>
+
+            <div class="card">
+                <span class="card-number">02</span>
+                <div class="card-image">
+                    <img src="./imagem car/freio.png" alt="">
+                </div>
+                <button class="card-btn">Revisão freios</button>
+            </div>
+
+            <div class="card">
+                <span class="card-number">03</span>
+                <div class="card-image">
+                        <img src="./imagem car/pneu.png" alt="">
+                </div>
+                <button class="card-btn">Pneus</button>
+            </div>
+
+            <div class="card">
+                <span class="card-number">04</span>
+                <div class="card-image">
+                       <img src="./imagem car/autoeletrica.png" alt="">
+                </div>
+                <button class="card-btn">Auto Eletrica</button>
+            </div>
+
+        </div>
+    </div>
+   </div>
+    <div class="ai-assistant-container" aria-label="Assistente de Inteligência Artificial Turbo Auto Car">
+    <div class="ai-icon" id="ai-toggle"></div> 
+
+    <div class="ai-chat-window" id="ai-window">
+        <div class="chat-header">
+            <h4>Assistente Turbo Auto Car 🚗</h4>
+            <span class="close-btn">&times;</span>
+        </div>
+        <div class="chat-body">
+            <p class="message bot-message">Olá! Sou seu assistente virtual. Como posso te ajudar hoje?</p>
+            </div>
+        <div class="chat-footer">
+            <input type="text" placeholder="Digite sua mensagem...">
+            <button>Enviar</button>
+        </div>
+    </div>
+</div>
+
+<script src="./src/ai-script.js"></script>
+
+</body>
+</html>
+
+</body>
+</html>
